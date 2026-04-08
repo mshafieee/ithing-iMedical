@@ -6,22 +6,22 @@
 <title>iMedical — رعاية صحية متصلة، نتائج أكثر أماناً</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Reem+Kufi:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --brand-red: #E12B2B;
-    --brand-red-deep: #B81E1E;
-    --brand-red-dark: #7A0F0F;
-    --brand-red-glow: rgba(225, 43, 43, 0.35);
-    --ink: #0E0608;
-    --ink-soft: #1A0E11;
-    --paper: #FFF8F6;
-    --paper-warm: #FDEEEA;
+    --brand-red: #A8202E;
+    --brand-red-deep: #861820;
+    --brand-red-dark: #5C1018;
+    --brand-red-glow: rgba(168, 32, 46, 0.25);
+    --ink: #14080A;
+    --ink-soft: #2A1518;
+    --paper: #FBF7F6;
+    --paper-warm: #F4E8E6;
     --line: rgba(255, 255, 255, 0.08);
-    --line-dark: rgba(14, 6, 8, 0.12);
-    --mono: 'JetBrains Mono', monospace;
-    --display: 'Reem Kufi', 'Tajawal', sans-serif;
-    --body: 'Tajawal', sans-serif;
+    --line-dark: rgba(20, 8, 10, 0.10);
+    --mono: 'IBM Plex Mono', monospace;
+    --display: 'IBM Plex Sans Arabic', sans-serif;
+    --body: 'IBM Plex Sans Arabic', sans-serif;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -51,9 +51,9 @@
   }
   .logo {
     font-family: var(--display);
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0;
     color: var(--ink);
     display: flex;
     align-items: center;
@@ -95,8 +95,8 @@
   .hero {
     min-height: 100vh;
     background:
-      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(255, 100, 100, 0.45), transparent 70%),
-      linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-deep) 50%, var(--brand-red-dark) 100%);
+      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(168, 32, 46, 0.5), transparent 70%),
+      linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-deep) 55%, var(--brand-red-dark) 100%);
     position: relative;
     display: flex;
     align-items: center;
@@ -148,8 +148,8 @@
     font-family: var(--display);
     font-size: clamp(56px, 8vw, 110px);
     font-weight: 700;
-    line-height: 0.95;
-    letter-spacing: -0.03em;
+    line-height: 1;
+    letter-spacing: -0.01em;
     margin-bottom: 24px;
   }
   .hero-subtitle {
@@ -341,8 +341,8 @@
     font-family: var(--display);
     font-size: clamp(40px, 5vw, 64px);
     font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
     margin-bottom: 24px;
     max-width: 900px;
   }
@@ -566,8 +566,8 @@
   /* ============ CTA FINAL ============ */
   .cta-final {
     background:
-      radial-gradient(ellipse at 30% 50%, rgba(255, 100, 100, 0.3), transparent 70%),
-      linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-deep) 100%);
+      radial-gradient(ellipse at 30% 50%, rgba(168, 32, 46, 0.4), transparent 70%),
+      linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%);
     color: white;
     text-align: center;
     padding: 140px 48px;
@@ -576,9 +576,9 @@
     font-family: var(--display);
     font-size: clamp(44px, 6vw, 76px);
     font-weight: 700;
-    line-height: 1.05;
+    line-height: 1.1;
     margin-bottom: 24px;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
   }
   .cta-final p {
     font-size: 19px;
