@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iMedical — رعاية صحية متصلة، نتائج أكثر أماناً</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Reem+Kufi:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-red: #E12B2B;
+    --brand-red-deep: #B81E1E;
+    --brand-red-dark: #7A0F0F;
+    --brand-red-glow: rgba(225, 43, 43, 0.35);
+    --ink: #0E0608;
+    --ink-soft: #1A0E11;
+    --paper: #FFF8F6;
+    --paper-warm: #FDEEEA;
+    --line: rgba(255, 255, 255, 0.08);
+    --line-dark: rgba(14, 6, 8, 0.12);
+    --mono: 'JetBrains Mono', monospace;
+    --display: 'Reem Kufi', 'Tajawal', sans-serif;
+    --body: 'Tajawal', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============ NAV ============ */
+  nav {
+    position: fixed;
+    top: 0;
+    inset-inline: 0;
+    z-index: 100;
+    padding: 18px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 248, 246, 0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line-dark);
+  }
+  .logo {
+    font-family: var(--display);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-mark {
+    width: 32px; height: 32px;
+    background: var(--brand-red);
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 6px 20px var(--brand-red-glow);
+  }
+  .logo-mark svg { width: 18px; height: 18px; stroke: white; stroke-width: 2.5; fill: none; }
+  .nav-links { display: flex; gap: 36px; font-size: 14px; font-weight: 500; }
+  .nav-links a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--brand-red); }
+  .nav-cta {
+    background: var(--ink);
+    color: white;
+    padding: 11px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(14, 6, 8, 0.25);
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(255, 100, 100, 0.45), transparent 70%),
+      linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-deep) 50%, var(--brand-red-dark) 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 120px 48px 80px;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+  .hero-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-text { color: white; }
+  .breadcrumb {
+    font-size: 13px;
+    opacity: 0.75;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pulse-icon {
+    width: 56px; height: 56px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 28px;
+    backdrop-filter: blur(10px);
+  }
+  .pulse-icon svg { width: 26px; height: 26px; stroke: white; stroke-width: 2.5; fill: none; }
+  .hero h1 {
+    font-family: var(--display);
+    font-size: clamp(56px, 8vw, 110px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+  }
+  .hero-subtitle {
+    font-size: clamp(20px, 2.2vw, 28px);
+    font-weight: 500;
+    margin-bottom: 28px;
+    opacity: 0.95;
+  }
+  .hero-desc {
+    font-size: 17px;
+    line-height: 1.85;
+    opacity: 0.85;
+    max-width: 560px;
+    margin-bottom: 40px;
+  }
+  .hero-cta-group { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: white;
+    color: var(--brand-red-deep);
+    padding: 18px 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: transform 0.25s, box-shadow 0.25s;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 50px rgba(0,0,0,0.3); }
+  .btn-ghost {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 18px 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    backdrop-filter: blur(10px);
+    transition: background 0.25s;
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.18); }
+
+  /* ============ HERO MOCKUP ============ */
+  .hero-mockup {
+    background: #0A0510;
+    border-radius: 18px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08);
+    overflow: hidden;
+    transform: perspective(1200px) rotateY(-8deg) rotateX(2deg);
+    transition: transform 0.6s;
+  }
+  .hero-mockup:hover { transform: perspective(1200px) rotateY(-4deg) rotateX(1deg); }
+  .mockup-bar {
+    background: #150810;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #888;
+  }
+  .mockup-dots { display: flex; gap: 7px; }
+  .mockup-dots span { width: 11px; height: 11px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #febc2e; }
+  .dot-g { background: #28c840; }
+  .mockup-body { padding: 28px; }
+  .mockup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+  }
+  .mockup-title {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: #aaa;
+    letter-spacing: 0.05em;
+  }
+  .mockup-live {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #4ade80;
+  }
+  .live-dot {
+    width: 8px; height: 8px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: blink 1.5s infinite;
+  }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .mockup-room {
+    background: #0F0820;
+    border: 1px solid #1f1530;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: #6b6580;
+    text-align: end;
+  }
+  .mockup-vitals {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .vital {
+    background: #0F0820;
+    border: 1px solid #1f1530;
+    padding: 14px;
+    border-radius: 8px;
+    text-align: end;
+  }
+  .vital-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: #6b6580;
+    margin-bottom: 6px;
+  }
+  .vital-value {
+    font-family: var(--mono);
+    font-size: 16px;
+    color: #4ade80;
+    font-weight: 600;
+  }
+
+  /* ============ STATS BAR ============ */
+  .stats {
+    background: var(--ink);
+    color: white;
+    padding: 60px 48px;
+  }
+  .stats-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+  .stat-item {
+    text-align: start;
+    border-inline-end: 1px solid rgba(255,255,255,0.1);
+    padding-inline-end: 30px;
+  }
+  .stat-item:last-child { border-inline-end: none; }
+  .stat-num {
+    font-family: var(--display);
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--brand-red);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-size: 14px;
+    opacity: 0.7;
+    line-height: 1.5;
+  }
+
+  /* ============ SECTIONS ============ */
+  section { padding: 120px 48px; }
+  .section-inner { max-width: 1400px; margin: 0 auto; }
+  .section-tag {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--brand-red);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-tag::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--brand-red);
+  }
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    max-width: 900px;
+  }
+  .section-desc {
+    font-size: 18px;
+    color: #5a4a4d;
+    max-width: 700px;
+    line-height: 1.8;
+    margin-bottom: 64px;
+  }
+
+  /* ============ FEATURES GRID ============ */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .feature-card {
+    background: white;
+    border: 1px solid var(--line-dark);
+    border-radius: 18px;
+    padding: 36px 32px;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0; inset-inline-end: 0;
+    width: 80px; height: 80px;
+    background: radial-gradient(circle, var(--brand-red-glow), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .feature-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--brand-red);
+    box-shadow: 0 20px 60px rgba(225, 43, 43, 0.12);
+  }
+  .feature-card:hover::before { opacity: 1; }
+  .feature-icon {
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, var(--brand-red), var(--brand-red-deep));
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 22px;
+    box-shadow: 0 10px 24px var(--brand-red-glow);
+  }
+  .feature-icon svg { width: 24px; height: 24px; stroke: white; stroke-width: 2.2; fill: none; }
+  .feature-card h3 {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .feature-card p {
+    font-size: 15px;
+    color: #6b5a5d;
+    line-height: 1.75;
+  }
+  .feature-card .badge {
+    display: inline-block;
+    margin-top: 16px;
+    font-family: var(--mono);
+    font-size: 10px;
+    background: var(--paper-warm);
+    color: var(--brand-red-deep);
+    padding: 5px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ============ COMPLIANCE BANNER ============ */
+  .compliance {
+    background: var(--paper-warm);
+    padding: 80px 48px;
+  }
+  .compliance-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .compliance h2 {
+    font-family: var(--display);
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .compliance p {
+    font-size: 16px;
+    color: #6b5a5d;
+    line-height: 1.8;
+  }
+  .compliance-logos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .compliance-badge {
+    background: white;
+    border: 1px solid var(--line-dark);
+    border-radius: 14px;
+    padding: 24px 18px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .compliance-badge:hover {
+    transform: translateY(-4px);
+    border-color: var(--brand-red);
+  }
+  .compliance-badge .acro {
+    font-family: var(--display);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--brand-red);
+    margin-bottom: 4px;
+  }
+  .compliance-badge .desc {
+    font-size: 11px;
+    color: #6b5a5d;
+    line-height: 1.4;
+  }
+
+  /* ============ DIFFERENTIATORS (KEY SELLING POINTS) ============ */
+  .diff {
+    background: var(--ink);
+    color: white;
+  }
+  .diff .section-title { color: white; }
+  .diff .section-desc { color: rgba(255,255,255,0.7); }
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .diff-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+    transition: all 0.3s;
+  }
+  .diff-item:hover {
+    background: rgba(225, 43, 43, 0.08);
+    border-color: var(--brand-red);
+  }
+  .diff-num {
+    font-family: var(--display);
+    font-size: 44px;
+    font-weight: 700;
+    color: var(--brand-red);
+    line-height: 1;
+  }
+  .diff-item h3 {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .diff-item p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+  }
+
+  /* ============ MODULES SECTION ============ */
+  .modules-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--line-dark);
+    border-radius: 18px;
+    overflow: hidden;
+    background: white;
+  }
+  .module-row {
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--line-dark);
+    border-inline-start: 1px solid var(--line-dark);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: background 0.25s;
+    cursor: pointer;
+  }
+  .module-row:nth-child(odd) { border-inline-start: none; }
+  .module-row:hover { background: var(--paper-warm); }
+  .module-icon {
+    width: 44px; height: 44px;
+    background: var(--paper-warm);
+    border-radius: 11px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+  .module-icon svg { width: 22px; height: 22px; stroke: var(--brand-red); stroke-width: 2.2; fill: none; }
+  .module-text { flex: 1; }
+  .module-text strong {
+    font-family: var(--display);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .module-text span {
+    font-size: 13px;
+    color: #6b5a5d;
+  }
+
+  /* ============ CTA FINAL ============ */
+  .cta-final {
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(255, 100, 100, 0.3), transparent 70%),
+      linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-deep) 100%);
+    color: white;
+    text-align: center;
+    padding: 140px 48px;
+  }
+  .cta-final h2 {
+    font-family: var(--display);
+    font-size: clamp(44px, 6vw, 76px);
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .cta-final p {
+    font-size: 19px;
+    opacity: 0.9;
+    margin-bottom: 44px;
+    max-width: 640px;
+    margin-inline: auto;
+    line-height: 1.7;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--ink);
+    color: white;
+    padding: 60px 48px 30px;
+  }
+  .footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 50px;
+  }
+  .footer-brand p {
+    font-size: 14px;
+    opacity: 0.6;
+    line-height: 1.7;
+    max-width: 320px;
+    margin-top: 16px;
+  }
+  .footer-col h4 {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .footer-col a {
+    display: block;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--brand-red); }
+  .footer-bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    opacity: 0.5;
+    font-family: var(--mono);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 968px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    section, .hero, .compliance, .stats, .cta-final { padding: 80px 20px; }
+    .hero-grid, .compliance-inner, .footer-inner { grid-template-columns: 1fr; gap: 50px; }
+    .features-grid, .diff-grid, .stats-grid, .modules-list { grid-template-columns: 1fr; }
+    .stat-item { border-inline-end: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 30px; }
+    .module-row { border-inline-start: none !important; }
+  }
+
+  /* ============ ANIMATIONS ============ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-text > * { animation: fadeUp 0.8s ease-out backwards; }
+  .hero-text > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-text > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-text > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-text > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-text > *:nth-child(5) { animation-delay: 0.5s; }
+  .hero-text > *:nth-child(6) { animation-delay: 0.6s; }
+  .hero-mockup { animation: fadeUp 1s ease-out 0.4s backwards; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg>
+    </div>
+    iMedical
+  </div>
+  <div class="nav-links">
+    <a href="#features">المميزات</a>
+    <a href="#modules">الوحدات</a>
+    <a href="#compliance">الامتثال</a>
+    <a href="#why">لماذا iMedical</a>
+  </div>
+  <a href="#cta" class="nav-cta">اطلب عرضاً تجريبياً</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="breadcrumb">← حلولنا</div>
+      <div class="pulse-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg>
+      </div>
+      <h1>iMedical</h1>
+      <div class="hero-subtitle">رعاية صحية متصلة، نتائج أكثر أماناً</div>
+      <p class="hero-desc">
+        منصة سحابية متكاملة تربط المرضى والكوادر الطبية والأصول الصحية في منظومة ذكية واحدة.
+        حدّد موقع المعدات الحيوية في ثوانٍ، راقب العلامات الحيوية عن بُعد، أتمت دورة العمل السريري،
+        واضمن الامتثال الكامل للوائح NPHIES و CBAHI و SFDA من لوحة عمليات سريرية مركزية.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#cta" class="btn-primary">جدولة عرض توضيحي ←</a>
+        <a href="#features" class="btn-ghost">استكشاف المنصة</a>
+      </div>
+    </div>
+
+    <div class="hero-mockup">
+      <div class="mockup-bar">
+        <div class="mockup-title">iMedical — Live</div>
+        <div class="mockup-dots">
+          <span class="dot-g"></span>
+          <span class="dot-y"></span>
+          <span class="dot-r"></span>
+        </div>
+      </div>
+      <div class="mockup-body">
+        <div class="mockup-header">
+          <div class="mockup-title">المراقبة السريرية</div>
+          <div class="mockup-live"><span class="live-dot"></span>مباشر</div>
+        </div>
+        <div class="mockup-room">غرفة 204 — العلامات الحيوية</div>
+        <div class="mockup-vitals">
+          <div class="vital">
+            <div class="vital-label">النبض</div>
+            <div class="vital-value">72 نبضة</div>
+          </div>
+          <div class="vital">
+            <div class="vital-label">SpO₂</div>
+            <div class="vital-value">98%</div>
+          </div>
+          <div class="vital">
+            <div class="vital-label">الأصول</div>
+            <div class="vital-value">70%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-num">29K+</div>
+      <div class="stat-label">منشأة صحية في المملكة تتجه نحو التحول الرقمي</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">امتثال كامل للوائح NPHIES و CBAHI و ZATCA</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">−65%</div>
+      <div class="stat-label">انخفاض في المطالبات التأمينية المرفوضة</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">مراقبة فورية ودعم فني محلي بالمملكة</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section id="features">
+  <div class="section-inner">
+    <div class="section-tag">المميزات الجوهرية</div>
+    <h2 class="section-title">منظومة واحدة. كل عملية سريرية وإدارية تحت السيطرة.</h2>
+    <p class="section-desc">
+      iMedical يجمع كل ما تحتاجه عيادتك أو مستشفاك في منصة عربية كاملة، مصممة خصيصاً للسوق السعودي،
+      مع تكاملات حكومية جاهزة وذكاء اصطناعي يساعد فريقك على اتخاذ قرارات أسرع وأكثر دقة.
+    </p>
+
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M9 11H7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-2"/><rect x="9" y="2" width="6" height="9" rx="1"/></svg></div>
+        <h3>السجل الطبي الإلكتروني (EMR)</h3>
+        <p>تخزين آمن للسجلات السريرية والوصفات والتحاليل والأشعة، مع واجهة عربية كاملة RTL، ودعم التقويمين الهجري والميلادي، ومشاركة فورية بين الأقسام.</p>
+        <span class="badge">EMR / EHR</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>إدارة المواعيد الذكية</h3>
+        <p>جدولة تلقائية مع تذكيرات SMS وواتساب بالعربية، وحجز ذاتي للمرضى عبر الويب والموبايل، وتوزيع ذكي للمواعيد يقلل وقت الانتظار ويرفع إنتاجية العيادة.</p>
+        <span class="badge">SCHEDULING</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3>تتبع الأصول الطبية في الوقت الفعلي</h3>
+        <p>حدّد موقع أجهزة التنفس الصناعي والحقن والكراسي المتحركة في ثوانٍ عبر مستشعرات BLE/Zigbee. لا مزيد من الوقت المهدر بحثاً عن المعدات الحيوية.</p>
+        <span class="badge">IoT TRACKING</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <h3>تكامل NPHIES المباشر</h3>
+        <p>تحقق فوري من الأهلية التأمينية، تقديم مطالبات إلكترونية فورية عبر بروتوكول HL7 FHIR، وانخفاض جوهري في حالات الرفض الفني للمطالبات.</p>
+        <span class="badge">NPHIES READY</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>الفوترة وإدارة الإيرادات (RCM)</h3>
+        <p>دورة إيرادات كاملة من الاستقبال حتى التحصيل، مع فاتورة ضريبية إلكترونية متوافقة مع ZATCA من اليوم الأول، وتقارير مالية لحظية لاتخاذ القرار.</p>
+        <span class="badge">ZATCA E-INVOICE</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+        <h3>إدارة الصيدلية والمخزون</h3>
+        <p>تتبع لحظي للأدوية والمستلزمات الطبية، تنبيهات انتهاء الصلاحية، وفحص تلقائي لتداخلات الأدوية والحساسية لحماية المريض من الأخطاء الدوائية.</p>
+        <span class="badge">PHARMACY</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h3>المراقبة السريرية عن بُعد (RPM)</h3>
+        <p>متابعة العلامات الحيوية للمرضى عبر أجهزة متصلة، وتنبيهات فورية للطاقم الطبي عند أي قراءة خارج المعدل الطبيعي. استمرارية رعاية حقيقية خارج أسوار المستشفى.</p>
+        <span class="badge">REMOTE CARE</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>الاستشارات الطبية عن بُعد</h3>
+        <p>منصة طب اتصالي مدمجة بـ HD video وتشفير end-to-end، تتكامل مباشرة مع السجل الطبي للمريض. وصف إلكتروني فوري وإحالة آلية للصيدلية.</p>
+        <span class="badge">TELEMEDICINE</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <h3>دعم القرار السريري بالذكاء الاصطناعي</h3>
+        <p>اقتراحات تشخيصية مبنية على التاريخ المرضي، تحذيرات استباقية من تدهور حالة المريض، وتحليل ذكي لنتائج المختبرات لرفع دقة التشخيص وتقليل الأخطاء الطبية.</p>
+        <span class="badge">AI POWERED</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPLIANCE ============ -->
+<section class="compliance" id="compliance">
+  <div class="compliance-inner">
+    <div>
+      <div class="section-tag">الامتثال التنظيمي</div>
+      <h2>متوافق مع كل اللوائح السعودية. من اليوم الأول.</h2>
+      <p>
+        iMedical مبني وفق المعايير السعودية والدولية معاً. لست بحاجة لقلق بشأن التحديثات التنظيمية —
+        فريقنا يحدّث المنصة باستمرار لضمان توافقها مع آخر متطلبات NPHIES و CBAHI و SFDA و ZATCA و MOH.
+      </p>
+    </div>
+    <div class="compliance-logos">
+      <div class="compliance-badge">
+        <div class="acro">NPHIES</div>
+        <div class="desc">منصة التبادل الصحي والتأميني</div>
+      </div>
+      <div class="compliance-badge">
+        <div class="acro">CBAHI</div>
+        <div class="desc">المركز السعودي لاعتماد المنشآت الصحية</div>
+      </div>
+      <div class="compliance-badge">
+        <div class="acro">SFDA</div>
+        <div class="desc">الهيئة العامة للغذاء والدواء</div>
+      </div>
+      <div class="compliance-badge">
+        <div class="acro">ZATCA</div>
+        <div class="desc">هيئة الزكاة والضريبة والجمارك</div>
+      </div>
+      <div class="compliance-badge">
+        <div class="acro">MOH</div>
+        <div class="desc">وزارة الصحة السعودية</div>
+      </div>
+      <div class="compliance-badge">
+        <div class="acro">HL7 FHIR</div>
+        <div class="desc">معايير التشغيل البيني العالمية</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIFFERENTIATORS — KEY SELLING HOOKS ============ -->
+<section class="diff" id="why">
+  <div class="section-inner">
+    <div class="section-tag">لماذا iMedical</div>
+    <h2 class="section-title">ما الذي يجعل iMedical مختلفاً عن أي حل آخر في السوق؟</h2>
+    <p class="section-desc">
+      معظم منصات HMS في السوق إما مستوردة بلا فهم حقيقي للسياق المحلي، أو محلية بدون عمق تقني. iMedical يجمع الاثنين.
+    </p>
+
+    <div class="diff-grid">
+      <div class="diff-item">
+        <div class="diff-num">01</div>
+        <div>
+          <h3>إنترنت الأشياء الطبي مدمج بالأساس</h3>
+          <p>على عكس HMS التقليدي، iMedical مبني فوق منصة IoT حقيقية. من تتبع الأصول إلى مراقبة المرضى إلى أتمتة غرفة العمليات — كل شيء متصل ولحظي وجاهز للتوسع.</p>
+        </div>
+      </div>
+
+      <div class="diff-item">
+        <div class="diff-num">02</div>
+        <div>
+          <h3>عربي حقيقي. ليس مجرد ترجمة</h3>
+          <p>واجهة RTL أصلية، تقارير عربية احترافية، وصفات طبية باللغتين، تذكيرات SMS عربية، ودعم فني بالعربية من فريق مقيم في المملكة. هذا ليس add-on — هذا الافتراضي.</p>
+        </div>
+      </div>
+
+      <div class="diff-item">
+        <div class="diff-num">03</div>
+        <div>
+          <h3>ذكاء اصطناعي يفهم السياق السريري</h3>
+          <p>نماذج AI مدرّبة على بروتوكولات طبية معتمدة لتقديم اقتراحات تشخيصية، تنبيهات استباقية، وتحليل ذكي لمساعدة الأطباء بدون استبدالهم. الذكاء يعزز الخبرة، لا ينافسها.</p>
+        </div>
+      </div>
+
+      <div class="diff-item">
+        <div class="diff-num">04</div>
+        <div>
+          <h3>منصة قابلة للتوسع من عيادة واحدة إلى شبكة مستشفيات</h3>
+          <p>معمارية multi-tenant تسمح لك بالبدء بعيادة واحدة، ثم التوسع لسلسلة فروع أو مجموعة مستشفيات بدون إعادة بناء. ادفع مقابل ما تستخدمه فقط.</p>
+        </div>
+      </div>
+
+      <div class="diff-item">
+        <div class="diff-num">05</div>
+        <div>
+          <h3>نشر سحابي أو محلي (On-Premise)</h3>
+          <p>اختر ما يناسب سياستك للبيانات: استضافة سحابية آمنة على خوادم بالمملكة، أو تركيب محلي داخل مركزك الطبي. كلاهما بنفس المميزات والتحديثات.</p>
+        </div>
+      </div>
+
+      <div class="diff-item">
+        <div class="diff-num">06</div>
+        <div>
+          <h3>قابل للتكامل مع كل شيء</h3>
+          <p>APIs مفتوحة، دعم HL7 FHIR و DICOM و MQTT، وتكاملات جاهزة مع منصات المختبرات والأشعة (LIS/RIS/PACS)، ومنصة صحة، وأنظمة شركات التأمين السعودية الرئيسية.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULES ============ -->
+<section id="modules">
+  <div class="section-inner">
+    <div class="section-tag">الوحدات الكاملة</div>
+    <h2 class="section-title">منصة شاملة لكل قسم في منشأتك الصحية</h2>
+    <p class="section-desc">
+      iMedical يغطي كل وحدة سريرية وإدارية ومالية تحتاجها — من الاستقبال حتى الخروج، ومن المختبر حتى الصيدلية.
+    </p>
+
+    <div class="modules-list">
+      <div class="module-row">
+        <div class="module-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/></svg></div>
+        <div class="module-text"><strong>إدارة المرضى</strong><span>ملفات شاملة، تاريخ مرضي، تأمينات</span></div>
+      </div>
+      <div class="module-row">
+        <div class="module-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg></div>
+        <div class="module-text"><strong>المواعيد والحجوزات</strong><span>جدولة ذكية، تذكيرات SMS، حجز ذاتي</span></div>
+      </div>
+      <div class="module-row">
+        <div class="module-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <div class="module-text"><strong>السجل الطبي EMR</strong><span>وصفات، تشخيصات، خطط علاج</span></div>
+      </div>
+      <div class="module-row">
+        <div class="module-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="module-text"><strong>غرف الطوارئ والفرز</strong><span>نظام Triage ذكي وأولوية لحظية</span></div>
+      </div>
+      <div class="module-row">
+        <div class="module-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="module-text"><strong>المختبرات والتحاليل</strong><span>تكامل LIS كامل ونتائج فورية</span></div>
+      </div>
+      <div class="module-row">
+        <div class="module-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <div class="module-text"><strong>الأشعة والصور الطبية</strong><span>RIS و PACS بمعيار DICOM</span></div>
+      </div>
+      <div class="module-row">
+        <div class="module-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg></div>
+        <div class="module-text"><strong>الصيدلية</strong><span>صرف، مخزون، تنبيهات صلاحية</span></div>
+      </div>
+      <div class="module-row">
+        <div class="module-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div class="module-text"><strong>الفوترة والمحاسبة</strong><span>فاتورة ZATCA إلكترونية فورية</span></div>
+      </div>
+      <div class="module-row">
+        <div class="module-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div class="module-text"><strong>إدارة المطالبات NPHIES</strong><span>تقديم مباشر وتتبع لحظي</span></div>
+      </div>
+      <div class="module-row">
+        <div class="module-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/></svg></div>
+        <div class="module-text"><strong>لوحات التحكم والتقارير</strong><span>BI و KPIs لحظية لكل قسم</span></div>
+      </div>
+      <div class="module-row">
+        <div class="module-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="module-text"><strong>الموارد البشرية والرواتب</strong><span>جداول الورديات وأداء الكوادر</span></div>
+      </div>
+      <div class="module-row">
+        <div class="module-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="module-text"><strong>الأمن السيبراني والصلاحيات</strong><span>تشفير AES-256 و RBAC متقدم</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="cta-final" id="cta">
+  <h2>جاهز لتحويل منشأتك الصحية؟</h2>
+  <p>احجز عرضاً تجريبياً مجانياً مع فريقنا، وسنريك كيف يمكن لـ iMedical أن يعيد تعريف كفاءة عيادتك أو مستشفاك خلال 14 يوماً فقط.</p>
+  <div class="hero-cta-group" style="justify-content: center;">
+    <a href="#" class="btn-primary">احجز عرضاً توضيحياً مجانياً ←</a>
+    <a href="#" class="btn-ghost">تحدث مع مستشار</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo" style="color: white;">
+        <div class="logo-mark">
+          <svg viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg>
+        </div>
+        iMedical
+      </div>
+      <p>منصة الرعاية الصحية المتصلة المصممة خصيصاً للسوق السعودي. متوافقة مع كل اللوائح، مدعومة بالذكاء الاصطناعي، مبنية على إنترنت الأشياء.</p>
+    </div>
+    <div class="footer-col">
+      <h4>المنصة</h4>
+      <a href="#features">المميزات</a>
+      <a href="#modules">الوحدات</a>
+      <a href="#compliance">الامتثال</a>
+      <a href="#why">لماذا iMedical</a>
+    </div>
+    <div class="footer-col">
+      <h4>الحلول</h4>
+      <a href="#">العيادات الخاصة</a>
+      <a href="#">المستشفيات</a>
+      <a href="#">المختبرات</a>
+      <a href="#">الصيدليات</a>
+    </div>
+    <div class="footer-col">
+      <h4>تواصل</h4>
+      <a href="#">احجز عرضاً</a>
+      <a href="#">الدعم الفني</a>
+      <a href="#">شركاؤنا</a>
+      <a href="#">الوثائق</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 iMedical — All rights reserved</div>
+    <div>Made in Makkah, Saudi Arabia 🇸🇦</div>
+  </div>
+</footer>
+
+</body>
+</html>
